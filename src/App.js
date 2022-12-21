@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import Example1 from './components/example1';
+import Example2 from './components/example2';
+import Example3 from './components/example3';
+import Example4 from './components/example4';
+import Example5 from './components/example5';
+import useWindowWidth from './hooks/useWindowWidth.js';
+import withHasMounted from './hocs/withHasMounted';
+import useHasMounted from './hooks/useHasMounted';
 
-function App() {
+function App({ hasMounted }) {
+const width = useWindowWidth();
+const hasMountedFromHooks = useHasMounted
+
+console.log(hasMounted, hasMountedFromHooks);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <Example4 /> */}
+        <Example5 />
+        {width}
       </header>
     </div>
   );
 }
 
-export default App;
+
+export default withHasMounted(App);
